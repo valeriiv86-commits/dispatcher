@@ -1,0 +1,22 @@
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Виртуальные окружения
+venv/
+env/
+.env
+
+# Конфигурации IDE
+.vscode/
+.idea/
+
+# Системные файлы
+*.log
+*.tmp
+*.bak
+*.swp
+Thumbs.db
+.DS_Store
