@@ -1,3 +1,6 @@
+$ErrorActionPreference = 'Stop'
+$path = Join-Path (Split-Path -Parent $MyInvocation.MyCommand.Path) 'order.py'
+$newContent = @'
 from pydantic import BaseModel
 from typing import Optional
 
@@ -24,3 +27,11 @@ class OrderUpdate(BaseModel):
     comment: Optional[str] = None
     price: Optional[float] = None
     totalPrice: Optional[float] = None
+'@
+$current = if (Test-Path $path) { Get-Content -Raw $path } else { '' }
+if ($current -ne $newContent) {
+    $newContent | Set-Content -Path $path -Encoding UTF8
+    Write-Host "[UPDATE] order.py refreshed"
+} else {
+    Write-Host "[SKIP] order.py already up to date"
+}
