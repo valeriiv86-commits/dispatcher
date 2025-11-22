@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Диспетчерская 24/7</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page">
+        <header class="page-header">
+            <h1>Диспетчерская 24/7</h1>
+            <div id="server-status" class="status-indicator">Проверка сервера...</div>
+        </header>
+        <main class="grid">
+            <section class="card">
+                <h2>Новая заявка</h2>
+                <form id="order-form">
+                    <div class="form-row">
+                        <label>Имя клиента</label>
+                        <input type="text" name="client_name" required>
+                    </div>
+                    <div class="form-row">
+                        <label>Телефон</label>
+                        <input type="tel" name="client_phone" required>
+                    </div>
+                    <div class="form-row">
+                        <label>Адрес (откуда)</label>
+                        <input type="text" name="from_address" required>
+                    </div>
+                    <div class="form-row">
+                        <label>Адрес (куда)</label>
+                        <input type="text" name="to_address" required>
+                    </div>
+                    <div class="form-row">
+                        <label>Комментарий</label>
+                        <textarea name="comment" rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <label for="price-input">Цена</label>
+                        <input type="number" id="price-input" name="price" min="0" step="100" placeholder="0">
+                    </div>
+                    <div class="price-calculator">
+                        <div class="price-calculator-row">
+                            <label for="calc-rate">Ставка за час (₽)</label>
+                            <input type="number" id="calc-rate" value="1000" min="0" step="100">
+                        </div>
+                        <div class="price-calculator-row">
+                            <label for="calc-workers">Кол-во грузчиков</label>
+                            <input type="number" id="calc-workers" value="2" min="1" step="1">
+                        </div>
+                        <div class="price-calculator-row">
+                            <label for="calc-hours">Часы работы</label>
+                            <input type="number" id="calc-hours" value="3" min="1" step="1">
+                        </div>
+                        <div class="price-calculator-row">
+                            <label for="calc-time">Время суток</label>
+                            <select id="calc-time">
+                                <option value="1">День (x1)</option>
+                                <option value="1.2">Вечер (x1.2)</option>
+                                <option value="1.5">Ночь (x1.5)</option>
+                            </select>
+                        </div>
+                        <div class="price-calculator-actions">
+                            <button type="button" id="calc-apply">Рассчитать цену</button>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit">Создать заявку</button>
+                    </div>
+                </form>
+            </section>
+            <section class="card">
+                <div class="card-header">
+                    <h2>Список заявок</h2>
+                    <div class="actions">
+                        <button id="export-csv">Экспорт в CSV</button>
+                    </div>
+                </div>
+                <div class="filters">
+                    <button data-filter="all" class="filter active">Все</button>
+                    <button data-filter="new" class="filter">Новый</button>
+                    <button data-filter="in_progress" class="filter">В работе</button>
+                    <button data-filter="done" class="filter">Выполнен</button>
+                    <button data-filter="cancelled" class="filter">Отменён</button>
+                </div>
+                <div id="orders-list" class="orders-list"></div>
+                <div id="orders-summary" class="orders-summary">Итого по выбранным: 0 ₽ (0 заявок)</div>
+            </section>
+        </main>
+    </div>
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
