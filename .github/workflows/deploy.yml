@@ -20,7 +20,17 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: appleboy/ssh-action@v1.2.0
+      - id: check
+        env: { SSH_HOST: "${{ secrets.SSH_HOST }}" }
+        run: |
+          if [ -z "$SSH_HOST" ]; then
+            echo "::warning::Секреты SSH не заданы — деплой пропущен"
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.check.outputs.ready == 'true'
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
