@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(cd backend && python -m pytest:*)"
+    ],
+    "deny": [
+      "Read(./venv/**)",
+      "Read(./**/__pycache__/**)",
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
+    "MAX_THINKING_TOKENS": "8000",
+    "BASH_MAX_OUTPUT_LENGTH": "20000"
+  }
+}

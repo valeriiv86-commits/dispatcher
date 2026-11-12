@@ -10,7 +10,7 @@ def list_all():
 
 @router.post("/")
 def create(order: OrderCreate):
-    return db.create_order(order.dict())
+    return db.create_order(order.model_dump())
 
 @router.get("/{order_id}")
 def get_one(order_id: str):
@@ -21,7 +21,7 @@ def get_one(order_id: str):
 
 @router.patch("/{order_id}")
 def update(order_id: str, data: OrderUpdate):
-    updated = db.update_order(order_id, {k: v for k, v in data.dict().items() if v is not None})
+    updated = db.update_order(order_id, {k: v for k, v in data.model_dump().items() if v is not None})
     if not updated:
         raise HTTPException(404, "Order not found")
     return updated
