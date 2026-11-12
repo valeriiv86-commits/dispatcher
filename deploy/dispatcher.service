@@ -1,0 +1,14 @@
+# sudo cp deploy/dispatcher.service /etc/systemd/system/ && sudo systemctl enable --now dispatcher
+[Unit]
+Description=Dispatcher API
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/dispatcher/backend
+EnvironmentFile=-/opt/dispatcher/.env
+ExecStart=/opt/dispatcher/venv/bin/python run.py
+Restart=always
+User=dispatcher
+
+[Install]
+WantedBy=multi-user.target
