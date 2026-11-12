@@ -182,7 +182,7 @@ function orderCard(o) {
   if (S.editing === o.id) editComment(); else showComment();
   var tel = h('a',{href:'tel:' + String(o.client_phone).replace(/[^\d+]/g,'')}, o.client_phone);
   return h('div',{class:'card'},
-    h('div',{class:'row'}, h('span',{class:'badge s-'+o.status}, ST[o.status]||o.status), h('span',{class:'mut grow'}, '№' + o.id + ' · ' + fmt(o.created_at)), h('b',null, o.price + ' ₽')),
+    h('div',{class:'row'}, h('span',{class:'badge s-'+o.status}, ST[o.status]||o.status), h('span',{class:'mut grow'}, '№' + String(o.id).slice(0, 8) + ' · ' + fmt(o.created_at)), h('b',null, o.price + ' ₽')),
     h('div',{class:'route'}, o.from_address + ' → ' + o.to_address),
     h('div',null, o.client_name + ' · ', tel),
     h('div',{class:'mut'}, 'Исполнитель: ' + (o.performer_name || 'не назначен')),

@@ -25,3 +25,6 @@ Thumbs.db
 .pytest_cache/
 # Локальные настройки Claude (личные, не в репо)
 .claude/settings.local.json
+
+# Данные (SQLite, пароль админа)
+data/

@@ -17,7 +17,7 @@ label input,label select,label textarea{display:block;width:100%;color:var(--fg)
 .row>*{flex:0 1 auto}
 .grow{flex:1 1 140px!important}
 .nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:1px solid var(--br);z-index:5}
-.nav button{flex:1;border:0;border-radius:0;min-width:0;padding:4px;font-size:13px;background:transparent}
+.nav button{flex:1;border:0;border-radius:0;min-width:0;padding:4px 1px;font-size:11px;letter-spacing:-.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:transparent}
 .nav button.on{color:var(--pri);font-weight:700}
 .chips{display:flex;gap:6px;overflow-x:auto;padding:4px 0}
 .chips button{white-space:nowrap;border-radius:22px;flex:none}
